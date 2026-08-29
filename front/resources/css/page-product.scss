@@ -1,0 +1,423 @@
+// ============================================
+// PRODUCT PAGE - MOBILE OPTIMIZED
+// ============================================
+
+body.page-product {
+  padding-bottom: 80px;
+
+  @media (min-width: 992px) {
+    padding-bottom: 40px;
+  }
+
+  // ============================================
+  // PRODUCT IMAGES
+  // ============================================
+  .product-images {
+    .main-product-img {
+      border-radius: 16px;
+      background: #fcfcfc;
+      border: 1px solid #f0f0f0;
+
+      @media (max-width: 768px) {
+        border-radius: 12px;
+      }
+
+      img {
+        padding: 16px;
+
+        @media (max-width: 576px) {
+          padding: 12px;
+        }
+      }
+    }
+
+    .sub-product-img {
+      .thumbnail-item {
+        border-radius: 10px;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+
+        &.active {
+          border-color: #1B4D3E;
+          background: #f8f8f8;
+        }
+
+        &:hover:not(.active) {
+          border-color: #ddd;
+        }
+      }
+    }
+  }
+
+  // ============================================
+  // PRODUCT INFO - MOBILE FRIENDLY
+  // ============================================
+  .premium-buy-box {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 20px;
+
+    @media (min-width: 576px) {
+      padding: 24px;
+    }
+
+    @media (min-width: 992px) {
+      padding: 28px;
+      border-radius: 20px;
+    }
+
+    // ============================================
+    // PRICE BLOCK
+    // ============================================
+    .price-block {
+      background: #f8f9fa !important;
+      border-radius: 12px !important;
+      padding: 12px 16px !important;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      @media (max-width: 576px) {
+        padding: 10px 12px !important;
+        gap: 4px;
+      }
+
+      h2 {
+        color: #1B4D3E !important;
+        font-size: clamp(1.6rem, 4vw, 2.6rem) !important;
+
+        @media (max-width: 576px) {
+          font-size: clamp(1.3rem, 5vw, 1.6rem) !important;
+        }
+      }
+
+      .old-price {
+        font-size: clamp(0.8rem, 1.5vw, 1rem) !important;
+      }
+
+      .price-badge {
+        font-size: clamp(0.6rem, 1.2vw, 0.75rem) !important;
+        padding: 4px 10px;
+
+        @media (max-width: 576px) {
+          font-size: 0.6rem !important;
+          padding: 3px 8px;
+        }
+      }
+    }
+
+    // ============================================
+    // SOCIAL PROOF - MOBILE
+    // ============================================
+    .mb-3.d-flex.align-items-center {
+      flex-wrap: wrap;
+      gap: 4px;
+
+      @media (max-width: 576px) {
+        gap: 4px;
+      }
+
+      .bg-dark {
+        padding: 2px 8px !important;
+        font-size: clamp(0.6rem, 1.2vw, 0.75rem) !important;
+
+        @media (max-width: 576px) {
+          font-size: 0.6rem !important;
+          padding: 2px 6px !important;
+        }
+      }
+
+      .text-muted {
+        font-size: clamp(0.6rem, 1.2vw, 0.75rem) !important;
+
+        @media (max-width: 576px) {
+          font-size: 0.55rem !important;
+        }
+      }
+
+      .badge.bg-danger {
+        font-size: clamp(0.55rem, 1vw, 0.7rem) !important;
+        padding: 3px 8px !important;
+
+        @media (max-width: 576px) {
+          font-size: 0.5rem !important;
+          padding: 2px 6px !important;
+        }
+      }
+    }
+
+    // ============================================
+    // SCARCITY
+    // ============================================
+    .mb-4.small {
+      font-size: clamp(0.55rem, 1vw, 0.7rem) !important;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      @media (max-width: 576px) {
+        font-size: 0.5rem !important;
+        gap: 3px;
+      }
+
+      div {
+        padding: 3px 8px !important;
+
+        @media (max-width: 576px) {
+          padding: 2px 6px !important;
+        }
+      }
+    }
+
+    // ============================================
+    // OPTIONS - MOBILE
+    // ============================================
+    .mobile-option-item {
+      min-height: 44px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #e9ecef;
+      background: #fff;
+      flex: 0 0 calc(33.333% - 6px);
+
+      @media (max-width: 576px) {
+        flex: 0 0 calc(50% - 4px);
+        min-height: 38px;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+      }
+
+      @media (max-width: 400px) {
+        flex: 0 0 calc(50% - 3px);
+        min-height: 34px;
+        padding: 3px 6px;
+        font-size: 0.65rem;
+      }
+
+      &.selected {
+        border-color: #1B4D3E;
+        background: rgba(27, 77, 62, 0.04);
+        box-shadow: 0 0 0 2px rgba(27, 77, 62, 0.08);
+      }
+
+      .mobile-option-label {
+        font-size: clamp(0.7rem, 1vw, 0.8rem);
+
+        @media (max-width: 576px) {
+          font-size: 0.65rem;
+        }
+
+        .option-name {
+          font-weight: 600;
+        }
+      }
+    }
+
+    // ============================================
+    // QUANTITY & BUTTONS - MOBILE OPTIMIZED
+    // ============================================
+    .d-flex.gap-3 {
+      flex-wrap: wrap;
+      gap: 8px !important;
+
+      @media (max-width: 576px) {
+        gap: 6px !important;
+      }
+
+      .quantity-wrap {
+        width: 100px !important;
+        height: 44px !important;
+        border-radius: 30px !important;
+        border: 1.5px solid #e9ecef !important;
+
+        @media (max-width: 576px) {
+          width: 80px !important;
+          height: 38px !important;
+        }
+
+        input {
+          font-size: clamp(0.9rem, 1.5vw, 1.1rem) !important;
+
+          @media (max-width: 576px) {
+            font-size: 0.8rem !important;
+          }
+        }
+
+        .minus,
+        .plus {
+          width: 28px !important;
+
+          @media (max-width: 576px) {
+            width: 22px !important;
+          }
+        }
+      }
+
+      .btn-gradient-dark {
+        flex: 1;
+        min-width: 100px;
+        height: 44px !important;
+        font-size: clamp(0.7rem, 1.2vw, 0.85rem) !important;
+        padding: 0 12px;
+        border-radius: 30px !important;
+
+        @media (max-width: 576px) {
+          min-width: 80px;
+          height: 38px !important;
+          font-size: 0.7rem !important;
+          padding: 0 8px;
+        }
+
+        i {
+          font-size: 0.9rem;
+
+          @media (max-width: 576px) {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    // ============================================
+    // BUY NOW BUTTON
+    // ============================================
+    .btn-gradient-primary {
+      height: 48px !important;
+      font-size: clamp(0.8rem, 1.5vw, 1rem) !important;
+      border-radius: 30px !important;
+
+      @media (max-width: 576px) {
+        height: 42px !important;
+        font-size: 0.75rem !important;
+      }
+    }
+
+    // ============================================
+    // WISHLIST
+    // ============================================
+    .custom-add-wishlist {
+      padding: 8px 16px !important;
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem) !important;
+      min-height: 40px;
+      border-radius: 30px !important;
+
+      @media (max-width: 576px) {
+        padding: 6px 12px !important;
+        font-size: 0.7rem !important;
+        min-height: 36px;
+      }
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // ============================================
+  // MOBILE STICKY BAR - ENHANCED
+  // ============================================
+  .mobile-buy-bar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.04) !important;
+    padding: 8px 12px !important;
+    padding-bottom: env(safe-area-inset-bottom, 8px) !important;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.show {
+      transform: translateY(0);
+    }
+
+    .d-flex {
+      gap: 6px;
+
+      @media (max-width: 576px) {
+        gap: 4px;
+      }
+
+      img {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 8px !important;
+
+        @media (max-width: 576px) {
+          width: 30px !important;
+          height: 30px !important;
+        }
+      }
+
+      .text-dark {
+        font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
+
+        @media (max-width: 576px) {
+          font-size: 0.8rem !important;
+        }
+      }
+
+      .btn {
+        height: 38px !important;
+        padding: 0 16px !important;
+        font-size: clamp(0.65rem, 1.2vw, 0.8rem) !important;
+        border-radius: 30px !important;
+
+        @media (max-width: 576px) {
+          height: 34px !important;
+          padding: 0 12px !important;
+          font-size: 0.6rem !important;
+        }
+      }
+    }
+  }
+
+  // ============================================
+  // DESCRIPTION SECTIONS - MOBILE
+  // ============================================
+  .product-description-sections {
+    .card {
+      border-radius: 12px;
+
+      @media (max-width: 576px) {
+        border-radius: 10px;
+      }
+
+      .card-header {
+        padding: 10px 14px;
+
+        @media (max-width: 576px) {
+          padding: 8px 12px;
+        }
+
+        h4 {
+          font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+        }
+      }
+
+      .card-body {
+        padding: 14px;
+
+        @media (min-width: 576px) {
+          padding: 18px 20px;
+        }
+
+        @media (min-width: 992px) {
+          padding: 24px 32px;
+        }
+
+        table {
+          font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+
+          td,
+          th {
+            padding: 6px 10px;
+
+            @media (max-width: 576px) {
+              padding: 4px 6px;
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

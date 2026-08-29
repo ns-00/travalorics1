@@ -1,0 +1,18 @@
+{
+    "code": "default",
+    "name": {
+        "zh-cn": "Travalorics 默认模板",
+        "en": "Travalorics Default Theme"
+    },
+    "description": {
+        "zh-cn": "Travalorics 默认模板",
+        "en": "Travalorics Default Theme"
+    },
+    "version": "v1.0.0",
+    "icon": "/images/logo.png",
+    "author": {
+        "name": "Travalorics",
+        "email": "team@Travalorics.com"
+    }
+}
+

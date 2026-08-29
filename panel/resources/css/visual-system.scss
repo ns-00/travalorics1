@@ -1,0 +1,198 @@
+// ============================================================
+// TRAVALORICS PANEL — SHARED VISUAL SYSTEM
+// Final SCSS layer replacing the legacy defensive patch link.
+// ============================================================
+@import './variables';
+
+:root {
+  --panel-primary: #{$primary};
+  --panel-primary-light: #{$primary-light};
+  --panel-primary-dark: #{$primary-dark};
+  --panel-accent: #{$accent};
+  --panel-bg: #{$bg};
+  --panel-surface: #{$surface};
+  --panel-border: #{$border};
+  --panel-text: #{$text-primary};
+  --panel-muted: #{$text-muted};
+}
+
+body {
+  font-family: $font-sans;
+  color: $text-primary;
+  background: $bg;
+}
+
+[dir='rtl'] body { font-family: 'Cairo', $font-sans; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: $focus-ring;
+}
+
+.header-box {
+  background: $surface;
+  border-bottom: 1px solid $border;
+  box-shadow: 0 2px 14px rgba(26, 32, 44, 0.06);
+
+  .header-logo img {
+    max-height: 40px;
+    transition: transform 0.2s ease;
+  }
+
+  .header-logo a:hover img { transform: translateY(-1px); }
+  .header-item {
+    border-radius: $radius-md;
+    &:hover { background: rgba(111, 78, 55, 0.06); }
+  }
+}
+
+.main-content .sidebar-box {
+  background: $surface;
+  border-inline-end-color: $border;
+
+  .sidebar-body { padding-block: 16px 72px; }
+  .accordion-button, .nav a { min-height: 40px; }
+}
+
+#content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(111, 78, 55, 0.24) transparent;
+}
+
+.page-title-box {
+  min-height: 42px;
+  align-items: center;
+  border-bottom-color: rgba(111, 78, 55, 0.12);
+}
+
+.page-title { letter-spacing: -0.01em; }
+
+.card {
+  border-color: rgba(26, 32, 44, 0.07);
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    border-color: rgba(111, 78, 55, 0.14);
+    box-shadow: $shadow-md;
+  }
+
+  .card-header {
+    background: linear-gradient(180deg, #fff 0%, #fcfcfd 100%);
+  }
+}
+
+.table-responsive {
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background: $surface;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  margin-bottom: 0;
+
+  thead tr th, thead tr td {
+    background: #fafbfc;
+    color: $text-muted;
+    border-bottom-color: rgba(111, 78, 55, 0.16);
+  }
+
+  tbody tr {
+    transition: background-color 0.18s ease;
+    &:hover td { background: rgba(111, 78, 55, 0.035); }
+  }
+}
+
+.btn {
+  min-height: 36px;
+  border-radius: $radius-md;
+  font-weight: 700;
+  &:focus-visible { box-shadow: $focus-ring; }
+}
+
+.btn-primary {
+  box-shadow: 0 4px 12px rgba(111, 78, 55, 0.22);
+  &:hover { box-shadow: 0 7px 18px rgba(111, 78, 55, 0.3); }
+}
+
+.form-control, .form-select {
+  min-height: 40px;
+  border-radius: $radius-md;
+  background: $surface;
+  &:focus { box-shadow: $focus-ring; }
+}
+
+.form-label, .col-form-label { letter-spacing: 0.01em; }
+
+.badge {
+  border-radius: $radius-full;
+  font-weight: 700;
+}
+
+.pagination .page-link {
+  min-width: 36px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-top-card .dashboard-item {
+  border-color: rgba(111, 78, 55, 0.08);
+  background: linear-gradient(145deg, #fff 0%, #fcfaf8 100%);
+}
+
+.empty-state, .no-results {
+  border: 1px dashed rgba(111, 78, 55, 0.25);
+  border-radius: $radius-lg;
+  background: rgba(111, 78, 55, 0.025);
+  padding: 36px 20px;
+  text-align: center;
+}
+
+.skeleton, .skeleton-loading {
+  background: linear-gradient(90deg, #f0f2f4 25%, #fafbfc 37%, #f0f2f4 63%);
+  background-size: 400% 100%;
+  animation: panel-skeleton 1.4s ease infinite;
+  border-radius: $radius-sm;
+}
+
+@keyframes panel-skeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.form-buttom-btns {
+  inset-inline-start: calc(#{$sidebar-w} + 16px);
+  inset-inline-end: 16px;
+  left: auto;
+  right: auto;
+}
+
+@media (max-width: $breakpoint-lg) {
+  .main-content {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+  .form-buttom-btns { inset-inline: 8px; }
+}
+
+@media (max-width: $breakpoint-md) {
+  #content { padding-inline: 14px !important; }
+  .card { border-radius: $radius-md; }
+}
+
+@media (max-width: $breakpoint-xs) {
+  #content { padding-inline: 10px !important; }
+  .page-title-box { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

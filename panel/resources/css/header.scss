@@ -1,0 +1,118 @@
+// ============================================
+// HEADER MODERN IMPROVEMENTS
+// ============================================
+header {
+  .header-top {
+    background-color: $primary;
+    color: #fff;
+    height: 38px;
+    font-size: 0.8rem;
+
+    @media (max-width: $breakpoint-sm) {
+      height: auto;
+      padding: 6px 0;
+      font-size: 0.7rem;
+    }
+
+    .top-info a {
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.2s;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    .language-switch {
+      .dropdown > a {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        img { width: 18px; margin-inline-end: 6px; }
+      }
+    }
+  }
+
+  .header-desktop {
+    padding: 20px 0 16px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    .logo {
+      max-height: 64px;
+      img { max-height: 64px; width: auto; }
+    }
+
+    .menu .navbar-nav .nav-item > .nav-link {
+      font-weight: 600;
+      color: #2d2d2d;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(27, 77, 62, 0.05);
+        color: $primary;
+      }
+
+      &.active {
+        background: $primary;
+        color: #fff !important;
+      }
+    }
+
+    .search-group {
+      background: #f3f3f3;
+      border-radius: 50px;
+
+      input {
+        height: 40px;
+        font-size: 0.9rem;
+        padding-left: 18px;
+        background: transparent;
+        width: 180px;
+      }
+
+      .btn i {
+        color: #555;
+        font-size: 1.2rem;
+      }
+    }
+
+    .icons .item .icon-quantity {
+      background: $primary;
+      font-size: 9px;
+      width: 18px;
+      height: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .header-mobile {
+    padding: 8px 12px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+
+    .logo img { max-height: 44px; }
+
+    #mobile-menu-offcanvas {
+      width: 85%;
+      max-width: 340px;
+
+      .offcanvas-header {
+        padding: 16px;
+        background: #fafafa;
+        .search-group { flex: 1; }
+      }
+
+      .mobile-menu-wrap {
+        .accordion-item {
+          .nav-item-text > a {
+            font-weight: 600;
+            padding: 12px 16px;
+            &:active { background: #f5f5f5; }
+          }
+        }
+      }
+    }
+  }
+}

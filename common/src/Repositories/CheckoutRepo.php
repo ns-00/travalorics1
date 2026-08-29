@@ -1,0 +1,130 @@
+<?php
+/**
+ * Copyright (c) Since 2024 Travalorics - All Rights Reserved
+ *
+ * @link       https://www.Travalorics.com
+ * @author     Travalorics <team@Travalorics.com>
+ * @license    https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ */
+
+namespace Travalorics\Common\Repositories;
+
+use Illuminate\Database\Eloquent\Builder;
+use Throwable;
+use Travalorics\Common\Models\Checkout;
+
+class CheckoutRepo extends BaseRepo
+{
+    /**
+     * @param  $requestData
+     * @return array
+     */
+    private function handleData($requestData): array
+    {
+        return [
+            'customer_id'          => $requestData['customer_id'] ?? 0,
+            'guest_id'             => $requestData['guest_id'] ?? '',
+            'shipping_address_id'  => $requestData['shipping_address_id'] ?? 0,
+            'shipping_method_code' => $requestData['shipping_method_code'] ?? '',
+            'billing_address_id'   => $requestData['billing_address_id'] ?? 0,
+            'billing_method_code'  => $requestData['billing_method_code'] ?? '',
+            'reference'            => $requestData['reference'] ?? [],
+            'coupon_code'          => $requestData['coupon_code'] ?? null,
+            'coupon_discount'      => $requestData['coupon_discount'] ?? 0,
+        ];
+    }
+
+    /**
+     * Get filter builder.
+     *
+     * @param  array  $filters
+     * @return Builder
+     */
+    public function builder(array $filters = []): Builder
+    {
+        $builder = Checkout::query()->with([
+            'customer',
+            'shippingAddress',
+            'billingAddress',
+        ]);
+
+        $customerID = $filters['customer_id'] ?? 0;
+        if ($customerID) {
+            $builder->where('customer_id', $customerID);
+        }
+
+        $guestID = $filters['guest_id'] ?? 0;
+        if (empty($customerID) && $guestID) {
+            $builder->where('guest_id', $guestID);
+        }
+
+        $shippingAddressID = $filters['shipping_address_id'] ?? 0;
+        if ($shippingAddressID) {
+            $builder->where('shipping_address_id', $shippingAddressID);
+        }
+
+        $billingAddressID = $filters['billing_address_id'] ?? 0;
+        if ($billingAddressID) {
+            $builder->where('billing_address_id', $billingAddressID);
+        }
+
+        return fire_hook_filter('repo.checkout.builder', $builder);
+    }
+
+    /**
+     * @param  $data
+     * @return mixed
+     * @throws Throwable
+     */
+    public function create($data): mixed
+    {
+        $checkout = new Checkout($this->handleData($data));
+        $checkout->saveOrFail();
+
+        return $checkout;
+    }
+
+    /**
+     * @param  mixed  $item
+     * @param  $data
+     * @return mixed
+     */
+    public function update(mixed $item, $data): mixed
+    {
+        if (isset($data['shipping_address_id'])) {
+            $item->shipping_address_id = $data['shipping_address_id'];
+        }
+
+        if (isset($data['shipping_method_code'])) {
+            $item->shipping_method_code = $data['shipping_method_code'];
+        }
+
+        if (isset($data['billing_address_id'])) {
+            $item->billing_address_id = $data['billing_address_id'];
+        }
+
+        if (isset($data['billing_method_code'])) {
+            $item->billing_method_code = $data['billing_method_code'];
+        }
+
+        if (array_key_exists('reference', $data)) {
+            $item->reference = $data['reference'];
+        }
+
+        if (array_key_exists('comment', $data)) {
+            $item->comment = $data['comment'];
+        }
+
+        if (array_key_exists('coupon_code', $data)) {
+            $item->coupon_code = $data['coupon_code'];
+        }
+
+        if (array_key_exists('coupon_discount', $data)) {
+            $item->coupon_discount = $data['coupon_discount'];
+        }
+
+        $item->save();
+
+        return $item;
+    }
+}

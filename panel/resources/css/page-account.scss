@@ -1,0 +1,402 @@
+// ============================================
+// ACCOUNT & WALLET - MODERN
+// ============================================
+.account-card-box {
+  border: 1px solid #ECF0F4;
+  padding: 16px;
+  border-radius: 16px;
+  background: #fff;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 24px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    min-height: 621px;
+    padding: 30px;
+  }
+
+  .account-card-title {
+    margin-bottom: 20px;
+
+    span {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 700;
+    }
+  }
+}
+
+body.page-account {
+  .account-info {
+    .account-data {
+      border-bottom: 1px solid #ECF0F4;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      margin-top: 30px;
+
+      @media (min-width: $breakpoint-sm) {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        margin-top: 40px;
+      }
+
+      .account-item-data {
+        text-align: center;
+
+        .value {
+          font-size: clamp(1.6rem, 3vw, 2.4rem);
+          font-weight: 800;
+          color: $primary;
+        }
+
+        .title {
+          font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+          color: #6c757d;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+
+    .no-order {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 40px 20px;
+      text-align: center;
+
+      i {
+        font-size: 3rem;
+        color: #adb5bd;
+        opacity: 0.5;
+      }
+
+      h5 {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+.account-sidebar {
+  border: 1px solid #e8eef3;
+  border-radius: 16px;
+  background: #fff;
+  padding: 16px;
+  margin-bottom: 20px;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 20px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .account-user {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e8eef3;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    gap: 12px;
+
+    @media (min-width: $breakpoint-sm) {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #e8eef3;
+
+      @media (min-width: $breakpoint-sm) {
+        width: 64px;
+        height: 64px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .account-name {
+      .name {
+        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+        font-weight: 700;
+      }
+
+      .email {
+        font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+        color: #6c757d;
+        word-break: break-all;
+      }
+    }
+  }
+
+  .account-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 2px;
+
+      &.active {
+        a {
+          background: rgba(111, 78, 55, 0.08);
+          color: $primary !important;
+          font-weight: 700;
+          border-left: 3px solid $primary;
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #495057;
+        font-weight: 500;
+        font-size: clamp(0.85rem, 1vw, 0.95rem);
+        transition: all 0.2s;
+        text-decoration: none;
+
+        @media (max-width: $breakpoint-sm) {
+          padding: 8px 12px;
+        }
+
+        &:hover {
+          background: #f8f9fa;
+          color: $primary;
+        }
+
+        i {
+          font-size: 1.1rem;
+          width: 24px;
+          text-align: center;
+          color: #6c757d;
+        }
+      }
+
+      &:last-child {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #e8eef3;
+
+        a {
+          color: #dc3545;
+
+          i {
+            color: #dc3545;
+          }
+
+          &:hover {
+            background: rgba(220, 53, 69, 0.05);
+          }
+        }
+      }
+    }
+  }
+}
+
+.account-table-box {
+  th,
+  td {
+    padding: 10px 6px;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  }
+
+  th {
+    border-bottom: 2px solid #f1f1f1;
+    font-weight: 700;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        display: block;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        border: 1px solid #f1f1f1;
+
+        td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 6px 0;
+          border: none;
+          border-bottom: 1px solid #f8f9fa;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &::before {
+            content: attr(data-title);
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+          }
+
+          .btn {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-wallet,
+.page-transactions {
+  .balance-summary {
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+    border-radius: 24px;
+    padding: 24px 28px;
+    color: #fff;
+    margin-bottom: 28px;
+
+    .balance-amount {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .balance-label {
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  .table-responsive {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    padding: 4px 0;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        th {
+          padding: 16px 20px;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: #9e9e9e;
+          border-bottom: 2px solid #f1f1f1;
+          font-weight: 700;
+        }
+      }
+
+      tbody {
+        td {
+          padding: 14px 20px;
+          border-bottom: 1px solid #f5f5f5;
+          font-size: 0.9rem;
+          vertical-align: middle;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &.amount {
+            font-weight: 700;
+            &.positive { color: #2e7d32; }
+            &.negative { color: #c62828; }
+          }
+
+          .badge-status {
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+          }
+        }
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        thead {
+          display: none;
+        }
+
+        tbody {
+          tr {
+            display: block;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #f1f1f1;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+
+            td {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 8px 0;
+              border-bottom: 1px solid #f8f8f8;
+              border: none;
+              border-bottom: 1px solid #f5f5f5;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              &::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: #6c757d;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+
+              &.amount {
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

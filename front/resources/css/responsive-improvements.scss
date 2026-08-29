@@ -1,0 +1,5 @@
+body[dir="rtl"] { font-family:'Cairo',sans-serif; line-height:1.8; }
+@media (max-width:576px) {
+  .header-mobile { padding:10px !important; }
+  .logo { max-width:80px; }
+}

@@ -1,0 +1,102 @@
+// ═══════════════════════════════════════════════════════════════
+// TRAVALORICS PANEL – Dashboard styles (نهائي)
+// ═══════════════════════════════════════════════════════════════
+@import 'variables';
+body.page-home {
+  .page-title-box { display: none !important; }
+  .container-fluid { margin-top: 0 !important; }
+  // ── Top KPI cards
+  .dashboard-top-card {
+    padding: 0;
+    .col-6 { padding: 6px; }
+    .dashboard-item {
+      background: #fff;
+      border: 1px solid #f0f2f5;
+      border-radius: 14px;
+      padding: 18px 16px;
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      &:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
+      .left {
+        .quantity {
+          font-size: 26px;
+          font-weight: 800;
+          color: #1a1a1a;
+          margin-bottom: 4px;
+          line-height: 1.2;
+          @media (min-width: 992px) { font-size: 32px; }
+        }
+        .title {
+          font-size: 12px;
+          color: #888;
+          font-weight: 500;
+          letter-spacing: 0.2px;
+        }
+      }
+      .right {
+        .icon {
+          font-size: 28px;
+          opacity: 0.85;
+          @media (min-width: 992px) { font-size: 34px; }
+        }
+      }
+    }
+    .col-6:nth-child(1) .dashboard-item .icon { color: #3279ff; }
+    .col-6:nth-child(2) .dashboard-item .icon { color: #00ce26; }
+    .col-6:nth-child(3) .dashboard-item .icon { color: #ff9800; }
+    .col-6:nth-child(4) .dashboard-item .icon { color: #ff655b; }
+  }
+  .top-sale-products .card-body {
+    @media (min-width: 768px) { min-height: 418px; }
+  }
+  #chart-new-quantity {
+    @media (min-width: 768px) { height: 380px; }
+  }
+  .dashboard-section-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 16px;
+      background: $primary;
+      border-radius: 2px;
+    }
+  }
+  .dashboard-orders-table .table thead tr th { font-size: 0.72rem; }
+  @media (max-width: 992px) {
+    .dashboard-top-card {
+      .col-6 { padding: 5px; }
+      .dashboard-item {
+        border-radius: 12px;
+        padding: 14px 12px;
+        min-height: 78px;
+        .left .quantity { font-size: 20px !important; font-weight: 800; line-height: 1.2; }
+        .left .title { font-size: 11px !important; margin-top: 2px; }
+        .right .icon { font-size: 24px !important; }
+      }
+    }
+  }
+  @media (max-width: 575px) {
+    .dashboard-top-card .dashboard-item {
+      padding: 12px 10px;
+      min-height: 70px;
+      .left .quantity { font-size: 18px !important; }
+      .left .title    { font-size: 10px !important; }
+      .right .icon    { font-size: 20px !important; }
+    }
+  }
+}

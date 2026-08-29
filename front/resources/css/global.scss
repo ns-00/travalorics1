@@ -1,0 +1,1227 @@
+// ============================================
+// GLOBAL STYLES - COMPLETE ENHANCEMENT
+// ============================================
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// ============================================
+// ROOT VARIABLES
+// ============================================
+:root {
+  --primary: #1B4D3E;
+  --primary-light: #2C6E58;
+  --primary-dark: #0F2F26;
+  --secondary: #F4F1EA;
+  --text-dark: #1A1A1A;
+  --text-muted: #6B7280;
+  --bg-light: #F8F6F3;
+}
+
+// ============================================
+// RESET & BASE
+// ============================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F8F6F3;
+  color: #1A1A1A;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[dir="rtl"] body {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0;
+}
+
+// ============================================
+// RESPONSIVE TYPOGRAPHY - PERFECT SCALING
+// ============================================
+h1 {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #1A1A1A;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1A1A1A;
+}
+
+h4 {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: #1A1A1A;
+}
+
+h5 {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1A1A1A;
+}
+
+h6 {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1A1A1A;
+}
+
+p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  line-height: 1.7;
+  color: #4B5563;
+  margin-bottom: 1rem;
+}
+
+small, .text-small {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  color: #6B7280;
+}
+
+// ============================================
+// CONTAINER - SAFE PADDING
+// ============================================
+.container {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
+
+// ============================================
+// RESPONSIVE GRID
+// ============================================
+.row {
+  --bs-gutter-x: 12px;
+  --bs-gutter-y: 12px;
+
+  @media (min-width: $breakpoint-sm) {
+    --bs-gutter-x: 16px;
+    --bs-gutter-y: 16px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 24px;
+  }
+}
+
+// ============================================
+// TOUCH TARGETS - WCAG COMPLIANT (44px min)
+// ============================================
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+.select-item,
+.thumbnail-item,
+.nav-link,
+.dropdown-item,
+[role="button"],
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-sm) {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+// ============================================
+// IMAGES
+// ============================================
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shadow-premium {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.bg-soft-primary {
+  background-color: rgba(27, 77, 62, 0.06);
+}
+
+.rounded-premium {
+  border-radius: 16px;
+
+  @media (max-width: $breakpoint-sm) {
+    border-radius: 12px;
+  }
+}
+
+// ============================================
+// BUTTONS - ENHANCED
+// ============================================
+.btn-primary-custom {
+  background: linear-gradient(135deg, #1B4D3E 0%, #2C6E58 100%);
+  border: none;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  transition: all 0.3s ease;
+  min-height: 48px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(27, 77, 62, 0.3);
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// ============================================
+// LINKS
+// ============================================
+a {
+  color: #1B4D3E;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #2C6E58;
+  }
+}
+
+// ============================================
+// SCROLLBAR - CLEAN
+// ============================================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+
+  &:hover {
+    background: #9CA3AF;
+  }
+}
+
+// ============================================
+// SELECTION
+// ============================================
+::selection {
+  background: rgba(27, 77, 62, 0.15);
+  color: #1A1A1A;
+}
+
+// ============================================
+// RESPONSIVE ADJUSTMENTS FOR ALL PAGES
+// ============================================
+
+// Cards
+.card {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  }
+}
+
+// Tables
+.table-responsive {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+// Modals
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+// Form controls
+.form-control,
+.form-select {
+  border-radius: 12px;
+  border: 1.5px solid #E5E7EB;
+  padding: 10px 16px;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: #1B4D3E;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+  }
+}
+
+// Badges
+.badge {
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+}
+
+// ============================================
+// CHECKBOXES & RADIO BUTTONS - SMALLER
+// ============================================
+.form-check-input {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #D1D5DB;
+  transition: all 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @media (max-width: 576px) {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:checked {
+    background-color: #1B4D3E;
+    border-color: #1B4D3E;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    background-size: 12px 12px;
+    background-position: center;
+
+    @media (max-width: 576px) {
+      background-size: 10px 10px;
+    }
+  }
+
+  &:focus {
+    border-color: #1B4D3E;
+    box-shadow: 0 0 0 2px rgba(27, 77, 62, 0.15);
+  }
+}
+
+// Radio buttons
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+
+  &:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    background-size: 10px 10px;
+    background-position: center;
+
+    @media (max-width: 576px) {
+      background-size: 8px 8px;
+    }
+  }
+}
+
+// Labels
+.form-check-label {
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  cursor: pointer;
+  padding-left: 4px;
+
+  @media (max-width: 576px) {
+    font-size: 0.75rem;
+  }
+}
+
+// Checkbox groups
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 0 !important;
+  min-height: 40px;
+
+  @media (max-width: 576px) {
+    min-height: 36px;
+    gap: 6px;
+  }
+
+  .form-check-input {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+// ============================================
+// CHECKBOXES & RADIO - IMPROVED (FULL BOX)
+// ============================================
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #E5E7EB;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  min-height: 44px;
+  background: #fff;
+  margin-bottom: 6px;
+
+  @media (max-width: 576px) {
+    padding: 6px 10px;
+    min-height: 38px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  &:hover {
+    border-color: #1B4D3E;
+    background: rgba(27, 77, 62, 0.02);
+  }
+
+  &.selected,
+  &:has(.form-check-input:checked) {
+    border-color: #1B4D3E;
+    background: rgba(27, 77, 62, 0.04);
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.06);
+  }
+
+  .form-check-input {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid #D1D5DB;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0 !important;
+    background-color: #fff;
+
+    @media (max-width: 576px) {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    &:checked {
+      background-color: #1B4D3E;
+      border-color: #1B4D3E;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+      background-size: 14px 14px;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @media (max-width: 576px) {
+        background-size: 12px 12px;
+      }
+    }
+
+    &:focus {
+      border-color: #1B4D3E;
+      box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.15);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .form-check-label {
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    cursor: pointer;
+    color: #1A1A1A;
+    font-weight: 500;
+    flex: 1;
+    padding: 0 !important;
+
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// ============================================
+// RADIO BUTTONS
+// ============================================
+.form-check .form-check-input[type="radio"] {
+  border-radius: 50%;
+
+  &:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    background-size: 12px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 576px) {
+      background-size: 10px 10px;
+    }
+  }
+}
+
+// ============================================
+// CHECKBOXES IN FILTER SIDEBAR
+// ============================================
+.filter-sidebar .form-check {
+  border: none;
+  padding: 4px 0;
+  min-height: 32px;
+  gap: 8px;
+
+  @media (max-width: 576px) {
+    min-height: 28px;
+    padding: 3px 0;
+  }
+
+  &:hover {
+    background: transparent;
+  }
+
+  &.selected,
+  &:has(.form-check-input:checked) {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .form-check-input {
+    width: 16px;
+    height: 16px;
+
+    @media (max-width: 576px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .form-check-label {
+    font-size: clamp(0.8rem, 0.9vw, 0.85rem);
+    color: #4B5563;
+  }
+}
+
+// ============================================
+// CHECKBOXES - ENHANCED (BIGGER CHECK MARK)
+// ============================================
+
+// المربع الرئيسي
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #D1D5DB;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 0 !important;
+  background-color: #fff;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+
+  @media (max-width: 576px) {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:checked {
+    background-color: #1B4D3E;
+    border-color: #1B4D3E;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 576px) {
+      background-size: 14px 14px;
+    }
+  }
+
+  &:focus {
+    border-color: #1B4D3E;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// تنسيق الصف كامل
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #E5E7EB;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  min-height: 48px;
+  background: #fff;
+  margin-bottom: 6px;
+
+  @media (max-width: 576px) {
+    padding: 6px 10px;
+    min-height: 42px;
+    gap: 10px;
+    border-radius: 8px;
+  }
+
+  &:hover {
+    border-color: #1B4D3E;
+    background: rgba(27, 77, 62, 0.02);
+  }
+
+  // عندما يكون المربع محدداً
+  &:has(.form-check-input:checked) {
+    border-color: #1B4D3E;
+    background: rgba(27, 77, 62, 0.05);
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.06);
+  }
+
+  .form-check-label {
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    cursor: pointer;
+    color: #1A1A1A;
+    font-weight: 500;
+    flex: 1;
+    padding: 0 !important;
+
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// ============================================
+// RADIO BUTTONS
+// ============================================
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+
+  @media (max-width: 576px) {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3C/svg%3E");
+    background-size: 14px 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1B4D3E;
+    border-color: #1B4D3E;
+
+    @media (max-width: 576px) {
+      background-size: 12px 12px;
+    }
+  }
+}
+
+// ============================================
+// FILTER SIDEBAR - checkbox
+// ============================================
+.filter-sidebar .form-check {
+  border: none;
+  padding: 4px 0;
+  min-height: 32px;
+  gap: 10px;
+  background: transparent;
+
+  @media (max-width: 576px) {
+    min-height: 28px;
+    padding: 3px 0;
+    gap: 8px;
+  }
+
+  &:hover {
+    background: transparent;
+    border: none;
+  }
+
+  &:has(.form-check-input:checked) {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .form-check-input {
+    width: 16px;
+    height: 16px;
+
+    @media (max-width: 576px) {
+      width: 14px;
+      height: 14px;
+    }
+
+    &:checked {
+      background-size: 12px 12px;
+
+      @media (max-width: 576px) {
+        background-size: 10px 10px;
+      }
+    }
+  }
+
+  .form-check-label {
+    font-size: clamp(0.8rem, 0.9vw, 0.85rem);
+    color: #4B5563;
+  }
+}
+
+// ============================================
+// PRODUCT OPTIONS - checkbox & radio
+// ============================================
+.product-options .form-check {
+  border: 1.5px solid #E5E7EB;
+  padding: 8px 12px;
+  min-height: 44px;
+  border-radius: 10px;
+
+  @media (max-width: 576px) {
+    padding: 6px 10px;
+    min-height: 38px;
+  }
+
+  &:has(.form-check-input:checked) {
+    border-color: #1B4D3E;
+    background: rgba(27, 77, 62, 0.04);
+  }
+
+  .form-check-input {
+    width: 18px;
+    height: 18px;
+
+    @media (max-width: 576px) {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:checked {
+      background-size: 14px 14px;
+
+      @media (max-width: 576px) {
+        background-size: 12px 12px;
+      }
+    }
+  }
+}
+
+/* ============================================================
+   SIMPLE ENHANCEMENTS - Minimal Changes
+   ============================================================ */
+
+/* تحسين الأزرار */
+.btn-primary {
+    background: #1B4D3E !important;
+    border-color: #1B4D3E !important;
+    transition: all 0.3s ease !important;
+    border-radius: 30px !important;
+    padding: 10px 24px !important;
+    font-weight: 600 !important;
+}
+
+.btn-primary:hover {
+    background: #0F3328 !important;
+    border-color: #0F3328 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(27, 77, 62, 0.3) !important;
+}
+
+/* تحسين البطاقات */
+.product-card-premium {
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+.product-card-premium:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* تحسين التجاوب الأساسي */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    .product-card-premium .product-info-premium {
+        padding: 12px !important;
+    }
+    
+    .product-card-premium .product-title-premium {
+        font-size: 0.85rem !important;
+    }
+    
+    .product-card-premium .price-current {
+        font-size: 1rem !important;
+    }
+}
+
+/* تحسين الهيدر للموبايل */
+@media (max-width: 992px) {
+    .header-mobile {
+        padding: 8px 12px !important;
+    }
+    
+    .header-mobile .logo img {
+        max-height: 35px !important;
+    }
+}
+
+/* تحسين الشريط العلوي */
+.header-top {
+    font-size: 0.7rem !important;
+}
+
+@media (max-width: 576px) {
+    .header-top .top-info span {
+        display: none !important;
+    }
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   TRAVALORICS FRONT – Mobile Fixes (Clean & Safe)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. إصلاح رمز العملة ﷼ (المشكلة الأساسية) ─────────────
+   لا نستخدم * { max-width } أبداً — نستهدف فقط ما يحتاج
+──────────────────────────────────────────────────────────── */
+bdi { font-size: inherit !important; line-height: inherit !important; display: inline !important; }
+
+/* ── 2. الشعار ──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  header .logo img,
+  .header-middle .logo img,
+  .navbar-brand img {
+    height: 58px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* ── 3. Hero slider – تصغير دوائر التنقل ────────────────── */
+.swiper-pagination-bullet,
+[class*="slider"] .dot,
+[class*="carousel"] .dot,
+[class*="slick-dot"] button {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  opacity: 0.5 !important;
+}
+.swiper-pagination-bullet-active,
+[class*="slider"] .dot.active {
+  opacity: 1 !important;
+  width: 20px !important;
+  border-radius: 4px !important;
+}
+/* الدائرة الزرقاء الكبيرة */
+.swiper-pagination-bullet,
+.swiper-button-next,
+.swiper-button-prev {
+  background: var(--primary, #1B4D3E) !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after { font-size: 14px !important; }
+
+@media (max-width: 767px) {
+  /* Hero height */
+  
+  
+
+  /* روابط القائمة */
+  #appHeader [class*="mobile"] .nav-link,
+  #appHeader [class*="mobile"] a:not(.btn) {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #1A202C !important;
+    padding: 13px 16px !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* مساحة فارغة تحت القائمة */
+  #appHeader [class*="mobile"] { padding-bottom: 40px !important; }
+}
+
+/* ─── صفحة الملف الشخصي ─────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* الـ sidebar يصبح في الأعلى */
+  .premium-sidebar-box {
+    padding: 16px !important;
+    border-radius: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* صورة الملف الشخصي */
+  .account-user .profile > div {
+    width: 72px !important;
+    height: 72px !important;
+    border-width: 2px !important;
+  }
+  .account-user .profile img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* اسم وبريد المستخدم */
+  .account-name .name { font-size: 1rem !important; margin-bottom: 2px !important; }
+  .account-name .email { font-size: 0.78rem !important; }
+
+  /* مسافة */
+  .account-user { margin-bottom: 12px !important; padding-bottom: 12px !important; }
+
+  /* روابط القائمة الجانبية */
+  .account-links { display: flex !important; flex-direction: column !important; gap: 2px !important; }
+  .account-links li a {
+    padding: 10px 12px !important;
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
+    gap: 10px !important;
+  }
+  .account-links li a i { font-size: 1rem !important; }
+
+  /* زر مركز الحساب النشط */
+  .account-links li.active a {
+    padding: 11px 12px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ─── Swiper pagination dots fix ─────────────────────────── */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: unset !important;
+  min-height: unset !important;
+  border-radius: 50% !important;
+  opacity: 0.4 !important;
+  background: #1B4D3E !important;
+  display: inline-block !important;
+  margin: 0 3px !important;
+  transition: all 0.25s ease !important;
+  padding: 0 !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 18px !important;
+  height: 8px !important;
+  border-radius: 4px !important;
+}
+
+/* ─── Header mobile – logo center ────────────────────────── */
+@media (max-width: 767px) {
+  .header-mobile {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 8px 14px !important;
+    position: relative !important;
+  }
+  /* الشعار في المنتصف المطلق */
+  .header-mobile .logo {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1 !important;
+  }
+  .header-mobile .logo img {
+    height: 58px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    object-fit: contain !important;
+  }
+  /* أيقونة القائمة يسار */
+  .header-mobile .mb-icon {
+    z-index: 2 !important;
+    font-size: 1.8rem !important;
+    line-height: 1 !important;
+  }
+  /* سلة التسوق يمين */
+  .header-mobile .header-cart-icon {
+    z-index: 2 !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .header-mobile .header-cart-icon img {
+    height: 26px !important;
+    width: auto !important;
+  }
+  .header-mobile .header-cart-icon .icon-quantity {
+    position: absolute !important;
+    top: -6px !important;
+    right: -6px !important;
+    font-size: 0.65rem !important;
+    min-width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    background: #1B4D3E !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 700 !important;
+  }
+}
+
+
+/* ─── Swiper slides fix ─────────────────────────────────── */
+
+/* ─── Swiper #module-swiper-1 fix ───────────────────────── */
+#module-swiper-1 {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#module-swiper-1 .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+#module-swiper-1 .swiper-slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: block;
+}
+#module-swiper-1 .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ─── Swiper pagination center ──────────────────────────── */
+#module-swiper-1 .swiper-pagination,
+.module-swiper .swiper-pagination {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  right: auto !important;
+  bottom: 16px !important;
+  display: flex !important;
+  justify-content: center !important;
+  width: auto !important;
+}
+
+/* ─── Layer.js Custom Theme ─────────────────────────────── */
+/* رسائل layer.msg */
+.layui-layer-msg {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+  font-family: Cairo, sans-serif !important;
+  font-size: 0.95rem !important;
+  padding: 12px 20px !important;
+  min-width: 200px !important;
+  text-align: center !important;
+}
+
+/* نافذة التأكيد */
+.layui-layer {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+  overflow: hidden !important;
+}
+
+/* العنوان */
+.layui-layer-title {
+  background: #1b4d3e !important;
+  color: #fff !important;
+  border-bottom: none !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 14px 20px !important;
+  font-family: Cairo, sans-serif !important;
+}
+
+/* المحتوى */
+.layui-layer-content {
+  font-family: Cairo, sans-serif !important;
+  font-size: 0.95rem !important;
+  color: #374151 !important;
+  padding: 20px !important;
+  line-height: 1.7 !important;
+}
+
+/* الأزرار */
+.layui-layer-btn {
+  border-top: 1px solid #f0f0f0 !important;
+  padding: 12px 16px !important;
+  text-align: center !important;
+  background: #fafafa !important;
+}
+
+.layui-layer-btn a {
+  border-radius: 50px !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  padding: 8px 24px !important;
+  min-width: 90px !important;
+  border: none !important;
+  transition: all 0.25s ease !important;
+  font-family: Cairo, sans-serif !important;
+}
+
+/* زر التأكيد */
+.layui-layer-btn0 {
+  background: linear-gradient(135deg, #1b4d3e, #2c6e58) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(27,77,62,0.3) !important;
+}
+.layui-layer-btn0:hover {
+  box-shadow: 0 6px 20px rgba(27,77,62,0.4) !important;
+  transform: translateY(-1px) !important;
+  color: #fff !important;
+}
+
+/* زر الإلغاء */
+.layui-layer-btn1 {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+  margin-right: 8px !important;
+}
+.layui-layer-btn1:hover {
+  background: #e5e7eb !important;
+  color: #111 !important;
+}
+
+/* زر الإغلاق */
+.layui-layer-ico16 {
+  background: rgba(255,255,255,0.3) !important;
+  border-radius: 50% !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  text-align: center !important;
+  top: 10px !important;
+  right: 10px !important;
+  transition: background 0.2s !important;
+}
+.layui-layer-ico16:hover {
+  background: rgba(255,255,255,0.5) !important;
+}
+
+/* رسالة النجاح */
+.layui-layer-msg.layui-layer-hui {
+  background: linear-gradient(135deg, #1b4d3e, #2c6e58) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 32px rgba(27,77,62,0.35) !important;
+}
+
+/* Loading */
+.layui-layer-loading .layui-layer-content {
+  padding: 0 !important;
+}
+.layui-layer-load0 {
+  background-color: rgba(27,77,62,0.1) !important;
+}
+
+/* Overlay */
+.layui-layer-shade {
+  background: rgba(0,0,0,0.5) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .layui-layer {
+    border-radius: 14px !important;
+    width: 90vw !important;
+    max-width: 340px !important;
+  }
+  .layui-layer-msg {
+    font-size: 0.88rem !important;
+    min-width: 160px !important;
+    max-width: 85vw !important;
+  }
+  .layui-layer-content { padding: 16px !important; }
+  .layui-layer-btn a { padding: 7px 18px !important; font-size: 0.82rem !important; }
+}

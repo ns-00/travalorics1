@@ -1,0 +1,124 @@
+// ============================================================
+// TRAVALORICS COFFEE — FOOTER
+// ============================================================
+@import './variables';
+
+footer {
+  background: $primary-dark;
+  color: rgba(255,255,255,0.72);
+  padding: 48px 0 24px;
+  margin-top: 48px;
+
+  @media (max-width: $breakpoint-md) { padding: 32px 0 20px; margin-top: 32px; }
+
+  a {
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    transition: $transition-fast;
+    &:hover { color: #fff; }
+  }
+
+  .footer-brand {
+    img { max-height: 44px; width: auto; margin-bottom: 14px; }
+
+    p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 280px;
+    }
+  }
+
+  .footer-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0; margin: 0;
+
+    li {
+      padding: 4px 0;
+
+      a {
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        &::before {
+          content: '›';
+          color: $accent;
+          font-weight: 700;
+        }
+
+        &:hover { color: #fff; padding-left: 4px; }
+      }
+    }
+  }
+
+  .footer-contact {
+    list-style: none;
+    padding: 0; margin: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 0.82rem;
+
+      i { color: $accent; font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+    }
+  }
+
+  // Social icons
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+
+    a {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: $transition;
+
+      &:hover {
+        background: $primary;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .footer-divider {
+    border-color: rgba(255,255,255,0.10);
+    margin: 24px 0 18px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    p, span { font-size: 0.78rem; color: rgba(255,255,255,0.50); margin: 0; }
+
+    .footer-payments {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      img { height: 24px; width: auto; opacity: 0.65; }
+    }
+  }
+}

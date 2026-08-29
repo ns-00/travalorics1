@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright (c) Since 2024 Travalorics - All Rights Reserved
+ *
+ * @link       https://www.Travalorics.com
+ * @author     Travalorics <team@Travalorics.com>
+ * @license    https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ */
+
+namespace Travalorics\Panel\Middleware;
+
+use Closure;
+use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
+use Travalorics\Panel\Repositories\RouteRepo;
+
+class AdminAuthenticate extends Middleware
+{
+    /**
+     * @param  $request
+     * @param  Closure  $next
+     * @param  ...$guards
+     * @return mixed
+     * @throws AuthenticationException
+     * @throws Exception
+     */
+    public function handle($request, Closure $next, ...$guards): mixed
+    {
+        $this->authenticate($request, $guards);
+
+        $routeName = $request->route()->getName();
+        $routeCode = str_replace('panel.', '', $routeName);
+        if (in_array($routeCode, RouteRepo::IGNORE_LIST)) {
+            return $next($request);
+        }
+
+        $routeCode = str_replace('.', '_', $routeCode);
+        if (! current_admin()->can($routeCode)) {
+            app()->setLocale(panel_locale_code());
+
+            return response()->view('panel::errors.403', [], 403);
+        }
+
+        return $next($request);
+    }
+
+    /**
+     * Get the path the user should be redirected to when they are not authenticated.
+     *
+     * @param  Request  $request
+     * @return string|void
+     */
+    protected function redirectTo(Request $request)
+    {
+        if (! $request->expectsJson()) {
+            session(['panel_redirect_uri' => $request->getUri()]);
+
+            return panel_route('login.index');
+        }
+    }
+}

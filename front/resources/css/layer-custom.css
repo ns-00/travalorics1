@@ -1,0 +1,96 @@
+/* تخصيص نوافذ layer.js */
+.layui-layer {
+    border-radius: 16px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25) !important;
+    font-family: 'Tajawal', 'Segoe UI', sans-serif !important;
+    overflow: hidden !important;
+}
+
+.layui-layer-title {
+    background: #2d3748 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    padding: 14px 20px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.layui-layer-content {
+    padding: 20px 24px !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    color: #1a202c !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+
+.layui-layer-btn {
+    padding: 12px 20px 20px !important;
+    border-top: 1px solid #edf2f7 !important;
+    text-align: left !important;  /* RTL: right */
+    direction: rtl !important;
+}
+
+.layui-layer-btn a {
+    border-radius: 8px !important;
+    padding: 8px 28px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    background-color: #3182ce !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.layui-layer-btn a:hover {
+    background-color: #2b6cb0 !important;
+    transform: scale(1.02) !important;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+    background-color: #3182ce !important;
+}
+.layui-layer-btn .layui-layer-btn1 {
+    background-color: #a0aec0 !important;
+}
+.layui-layer-btn .layui-layer-btn1:hover {
+    background-color: #718096 !important;
+}
+
+/* أيقونات */
+.layui-layer-ico {
+    background-size: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -20px !important;
+}
+
+.layui-layer-ico1 { background-position: 0 -40px !important; }  /* نجاح */
+.layui-layer-ico2 { background-position: 0 -80px !important; }  /* خطأ */
+.layui-layer-ico3 { background-position: 0 -120px !important; } /* تأكيد */
+.layui-layer-ico0 { background-position: 0 -160px !important; } /* تحذير */
+
+/* شاشات صغيرة */
+@media (max-width: 600px) {
+    .layui-layer {
+        width: 92% !important;
+        margin: 0 4% !important;
+        border-radius: 12px !important;
+    }
+    .layui-layer-title {
+        font-size: 16px !important;
+        padding: 12px 16px !important;
+    }
+    .layui-layer-content {
+        padding: 16px !important;
+        font-size: 15px !important;
+    }
+    .layui-layer-btn a {
+        padding: 6px 20px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* إزالة التحديد الافتراضي */
+.layui-layer-shade {
+    background-color: rgba(0,0,0,0.45) !important;
+}

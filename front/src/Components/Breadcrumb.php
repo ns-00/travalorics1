@@ -1,0 +1,84 @@
+<?php
+/**
+ * Copyright (c) Since 2024 Travalorics - All Rights Reserved
+ *
+ * @link       https://www.Travalorics.com
+ * @author     Travalorics <team@Travalorics.com>
+ * @license    https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ */
+
+namespace Travalorics\Front\Components;
+
+use Exception;
+use Illuminate\View\Component;
+use Travalorics\Common\Libraries\Breadcrumb as BreadcrumbLib;
+
+class Breadcrumb extends Component
+{
+    public array $breadcrumbs;
+
+    public bool $showFilter = false;
+
+    /**
+     * @param  $type
+     * @param  $value
+     * @param  string  $title
+     * @param  bool  $showFilter
+     * @throws Exception
+     */
+    public function __construct($type, $value, string $title = '', bool $showFilter = false)
+    {
+        $this->breadcrumbs[] = [
+            'title' => front_trans('common.home'),
+            'url'   => front_route('home.index'),
+        ];
+
+        $breadcrumbLib = BreadcrumbLib::getInstance();
+
+        $accountRoutes = [
+            'account.orders.index',
+            'account.favorites.index',
+            'account.reviews.index',
+            'account.addresses.index',
+            'account.order_returns.index',
+            'account.edit.index',
+            'account.password.index',
+        ];
+
+        if (in_array($type, ['order', 'order_return']) || in_array($value, $accountRoutes)) {
+            $this->breadcrumbs[] = $breadcrumbLib->getTrail('route', 'account.index', front_trans('account.account'));
+        }
+
+        if ($type == 'order') {
+            $this->breadcrumbs[] = $breadcrumbLib->getTrail('route', 'account.orders.index', front_trans('account.orders'));
+        } elseif ($type == 'order_return') {
+            $this->breadcrumbs[] = $breadcrumbLib->getTrail('route', 'account.order_returns.index', front_trans('account.order_returns'));
+        } elseif ($type == 'brand') {
+            $this->breadcrumbs[] = $breadcrumbLib->getTrail('route', 'brands.index', front_trans('product.brand'));
+        }
+
+        $this->breadcrumbs[] = $breadcrumbLib->getTrail($type, $value, $title);
+
+        $routes = [
+            'products.index',
+            'categories.slug_show',
+            'categories.show',
+            'brands.show',
+            'brands.slug_show',
+        ];
+
+        if ($showFilter) {
+            $this->showFilter = true;
+        } elseif (in_array(pure_route_name(), $routes)) {
+            $this->showFilter = true;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function render(): mixed
+    {
+        return view('components.breadcrumb');
+    }
+}

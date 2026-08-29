@@ -1,0 +1,262 @@
+// ═══════════════════════════════════════════════════════════════
+// TRAVALORICS PANEL – Analytics pages
+// Targets: analytics/index.blade.php  customer.blade.php
+//          order.blade.php  product.blade.php
+// ═══════════════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════
+// Chart card component  (x-panel-chart-line / x-panel-chart-pie)
+// Rendered as .card with a canvas inside
+// ══════════════════════════════════════════
+
+.card {
+  // Chart cards share the global card chrome; add chart-specific spacing
+  canvas {
+    max-height: 320px;
+    width: 100% !important;
+  }
+}
+
+// ── Chart line card
+.panel-chart-line-card,
+[id^="order"] .card,
+[id^="product"] .card,
+[id^="customer"] .card {
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  box-shadow: $shadow-sm;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  .card-header {
+    background: #fff;
+    border-bottom: 1px solid $border;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: $primary;
+      border-radius: 2px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+
+  .card-body {
+    padding: 1.25rem;
+    background: #fff;
+
+    @media (max-width: $breakpoint-sm) { padding: 0.875rem; }
+  }
+}
+
+
+// ══════════════════════════════════════════
+// Order analytics — top sale products card
+// ══════════════════════════════════════════
+
+.top-sale-products {
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  box-shadow: $shadow-sm;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .card-header {
+    background: #fff;
+    border-bottom: 1px solid $border;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: $accent;
+      border-radius: 2px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+
+  .card-body {
+    padding: 0.5rem 0 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  // ── Top-products table — rank / product / count
+  .table-last-no-border {
+    margin-bottom: 0;
+
+    tbody tr {
+      transition: background-color 0.15s ease;
+
+      &:hover { background-color: #fdfaf8; }
+
+      // Remove border on last row
+      &:last-child td { border-bottom: none; }
+
+      td {
+        padding: 0.75rem 1rem;
+        vertical-align: middle;
+        border-bottom: 1px solid #f5efe9;
+        font-size: 0.875rem;
+      }
+    }
+
+    // ── Rank cell (gold / silver / bronze SVG + fallback badge)
+    td:first-child {
+      width: 48px;
+      padding-right: 0;
+
+      .img-fluid.wh-30 {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+      }
+
+      // Rank 4+ badge
+      .badge.bg-secondary {
+        font-size: 0.7rem;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #a8927f !important;
+      }
+    }
+
+    // ── Product cell (thumbnail + name link)
+    td:nth-child(2) {
+      a.d-flex {
+        text-decoration: none;
+        color: $text-primary;
+        gap: 0.625rem;
+        align-items: center;
+        transition: color 0.15s;
+
+        &:hover { color: $primary; }
+
+        .wh-30.rounded-circle {
+          width: 30px;
+          height: 30px;
+          min-width: 30px;
+          border: 1px solid $border;
+          background: #f5f5f5;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+        }
+
+        // Product summary text — clamp to 2 lines
+        > :not(.wh-30) {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          line-height: 1.35;
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    // ── Count cell
+    td:last-child {
+      text-align: center;
+      font-weight: 700;
+      color: $primary;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+
+// ══════════════════════════════════════════
+// Analytics page layout
+// ══════════════════════════════════════════
+
+// order.blade.php splits into two half-width chart cards on desktop
+.col-12.col-md-6.mb-3 {
+  @media (min-width: $breakpoint-md) {
+    // The two side-by-side columns need equal height
+    display: flex;
+    flex-direction: column;
+
+    > .card,
+    > .top-sale-products {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    > .card + .card {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+// ── Pie chart container (customer.blade.php)
+.col-6 {
+  // Ensure pie chart doesn't get squeezed on small screens
+  @media (max-width: $breakpoint-sm) {
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    canvas { max-height: 260px; }
+  }
+}
+
+// ── Utility: consistent min height on analytics cards
+.card.h-min-600 {
+  // Already defined in page-admins.scss; analytics shares it
+  canvas { max-height: 280px; }
+}
+
+
+// ══════════════════════════════════════════
+// Chart.js tooltip — match brand palette
+// ══════════════════════════════════════════
+// Chart.js renders tooltips in a <div id="chartjs-tooltip"> element;
+// these override its default dark black box.
+#chartjs-tooltip {
+  background: rgba(74, 51, 36, 0.92) !important;
+  border-radius: $radius-md !important;
+  padding: 8px 14px !important;
+  color: #fff !important;
+  font-size: 0.8rem !important;
+  box-shadow: $shadow-md !important;
+  pointer-events: none !important;
+
+  table {
+    color: #fff;
+    font-size: 0.8rem;
+
+    thead tr th { font-weight: 700; padding-bottom: 4px; }
+    tbody tr td { padding: 2px 4px; }
+  }
+}
+
+// ── Utility class used across analytics templates
+.wh-30 {
+  width: 30px;
+  height: 30px;
+}

@@ -1,0 +1,305 @@
+.account-card-box {
+  border: 1px solid #ECF0F4;
+  padding: 16px;
+
+  @media (min-width: 992px) {
+    min-height: 621px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 30px;
+  }
+
+  .account-card-title {
+    margin-bottom: 30px;
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+
+      @media (min-width: 768px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .account-card-sub-title {
+    margin-bottom: 16px;
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}
+
+body.page-account {
+  .account-info {
+    .account-data {
+      border-bottom: 1px solid #ECF0F4;
+      margin-bottom: 50px;
+      padding-bottom: 50px;
+      margin-top: 50px;
+
+      .account-item-data {
+        text-align: center;
+
+        .value {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        .title {
+          // color: #000;
+        }
+      }
+    }
+
+    .no-order {
+      background-color: #f6f6f6;
+      font-size: 1rem;
+
+      a {
+        color: #457C46;
+      }
+    }
+  }
+}
+
+.account-sidebar {
+  border: 1px solid #e8eef3;
+  margin-bottom: 20px;
+
+  .account-user {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e8eef3;
+    margin: 16px;
+    padding-bottom: 20px;
+
+    @media (min-width: 768px) {
+      margin: 30px;
+      padding-bottom: 30px;
+    }
+
+    .profile {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e8eef3;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 14px;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .account-name {
+      .name {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  .account-links {
+    list-style: none;
+    padding-left: 0;
+    li {
+      &.active {
+        a {
+          color: #222;
+          border-left: 2px solid $primary;
+        }
+      }
+
+      a {
+        color: #7C818B;
+        padding: 6px 10px 6px 18px;
+        margin: 20px 0;
+        border-left: 2px solid transparent;
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        font-size: 1rem;
+        line-height: 1;
+
+        @media (min-width: 768px) {
+          padding: 6px 10px 6px 30px;
+          margin: 26px 0;
+        }
+
+        &:hover {
+          color: #222;
+        }
+
+        i {
+          color: #222;
+          font-size: 20px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+.account-table-box {
+  th, td {
+    padding: 10px 0;
+  }
+
+  th {
+    border-bottom: none;
+    font-size: 14px;
+  }
+
+  tr:last-child {
+    td {
+      border-bottom: none;
+    }
+  }
+}
+
+// ============================================
+// WALLET / TRANSACTIONS
+// ============================================
+body.page-wallet, .page-transactions {
+  .table-responsive {
+    table {
+      @media (max-width: 576px) {
+        thead {
+          display: none;
+        }
+        tbody {
+          tr {
+            display: block;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #f1f1f1;
+            td {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 6px 0;
+              border: none;
+              border-bottom: 1px solid #f8f9fa;
+              &:last-child {
+                border-bottom: none;
+              }
+              &::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #6c757d;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+              &.amount {
+                font-weight: 700;
+                font-size: 1rem;
+                &.positive {
+                  color: #28a745;
+                }
+                &.negative {
+                  color: #dc3545;
+                }
+              }
+              &.date {
+                font-size: 0.8rem;
+                color: #6c757d;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .page-head {
+    .page-title {
+      font-size: clamp(1.2rem, 4vw, 2rem) !important;
+    }
+  }
+  .balance-summary {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    .balance-amount {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 800;
+      color: $primary;
+    }
+    .balance-label {
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      color: #6c757d;
+    }
+  }
+}
+
+// ============================================
+// PROFILE IMAGE - ENHANCED
+// ============================================
+.account-sidebar .account-user {
+  .profile {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #1B4D3E;
+    box-shadow: 0 2px 12px rgba(27, 77, 62, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    margin-right: 16px;
+
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 60px;
+      border-width: 2px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    // أيقونة افتراضية إذا لم توجد صورة
+    .no-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1B4D3E, #2C6E58);
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .account-name {
+    .name {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .email {
+      font-size: 0.8rem;
+      color: #6B7280;
+    }
+  }
+}

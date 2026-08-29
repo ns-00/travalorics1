@@ -1,0 +1,175 @@
+// ============================================================
+// TRAVALORICS FRONTEND — SHARED VISUAL SYSTEM
+// Final layer for cross-page polish. Data and interactions stay untouched.
+// ============================================================
+@import './variables';
+
+:root {
+  --front-primary: #{$primary};
+  --front-primary-light: #{$primary-light};
+  --front-primary-dark: #{$primary-dark};
+  --front-accent: #{$accent};
+  --front-bg: #{$bg-color};
+  --front-surface: #fff;
+  --front-border: #{$border-color};
+  --front-text: #{$text-dark};
+  --front-muted: #{$text-muted};
+}
+
+body {
+  background: $bg-color;
+  color: $text-dark;
+}
+
+body, button, input, select, textarea {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+[dir='rtl'] body,
+[dir='rtl'] button,
+[dir='rtl'] input,
+[dir='rtl'] select,
+[dir='rtl'] textarea {
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a, button, input, select, textarea,
+.card, .card-product, .header-icon, .btn, .nav-link {
+  transition: $transition;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: $focus-ring;
+}
+
+.btn, .btn-primary, .btn-outline, .btn-outline-primary, .btn-secondary {
+  border-radius: $radius-full;
+  min-height: 44px;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, $primary, $primary-light);
+  border-color: $primary;
+  box-shadow: 0 6px 18px rgba($primary, 0.2);
+
+  &:hover, &:focus-visible {
+    background: linear-gradient(135deg, $primary-dark, $primary);
+    border-color: $primary-dark;
+    box-shadow: 0 10px 24px rgba($primary, 0.28);
+  }
+}
+
+.btn-outline, .btn-outline-primary {
+  border-width: 1.5px;
+  color: $primary;
+  border-color: $primary;
+  background: transparent;
+
+  &:hover, &:focus-visible {
+    color: #fff;
+    background: $primary;
+    border-color: $primary;
+  }
+}
+
+.card, .card-product, .product-card-premium,
+.account-table-box, .filter-sidebar, .checkout-summary, .cart-summary {
+  border: 1px solid rgba($text-dark, 0.06);
+  border-radius: $radius-lg;
+  background: #fff;
+  box-shadow: $shadow-sm;
+}
+
+.card:hover, .card-product:hover, .product-card-premium:hover {
+  border-color: rgba($primary, 0.14);
+  box-shadow: $shadow-md;
+}
+
+.card-header, .card-footer {
+  border-color: rgba($text-dark, 0.07);
+}
+
+.form-control, .form-select, textarea {
+  min-height: 44px;
+  border: 1.5px solid $border-color;
+  border-radius: $radius-md;
+  background: #fff;
+  color: $text-dark;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: $focus-ring;
+  }
+}
+
+.badge {
+  border-radius: $radius-full;
+  font-weight: 700;
+}
+
+.table-responsive, .account-table-box {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 640px;
+
+  thead th, thead td {
+    background: rgba($primary, 0.045);
+    color: $text-secondary;
+    font-weight: 700;
+    border-bottom-color: rgba($primary, 0.14);
+  }
+
+  tbody tr {
+    &:hover td { background: rgba($primary, 0.028); }
+    &:last-child td { border-bottom: 0; }
+  }
+}
+
+.empty-state, .no-results, .empty-cart {
+  border: 1px dashed rgba($primary, 0.24);
+  border-radius: $radius-lg;
+  background: rgba($primary, 0.025);
+  padding: clamp(28px, 5vw, 56px) 20px;
+  text-align: center;
+}
+
+.skeleton, .skeleton-loading {
+  background: linear-gradient(90deg, #f1f3ef 25%, #fafbf9 37%, #f1f3ef 63%);
+  background-size: 400% 100%;
+  animation: front-skeleton 1.4s ease infinite;
+  border-radius: $radius-sm;
+}
+
+@keyframes front-skeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .container { padding-inline: 20px !important; }
+  .card, .card-product, .product-card-premium { border-radius: 14px; }
+}
+
+@media (max-width: $breakpoint-md) {
+  .container { padding-inline: 16px !important; }
+  .table-responsive { border-radius: $radius-md; }
+  .btn { min-height: 46px; }
+}
+
+@media (max-width: $breakpoint-xs) {
+  .container { padding-inline: 12px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

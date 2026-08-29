@@ -1,0 +1,127 @@
+<?php
+/**
+ * Copyright (c) Since 2024 Travalorics - All Rights Reserved
+ *
+ * @link       https://www.Travalorics.com
+ * @author     Travalorics <team@Travalorics.com>
+ * @license    https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ */
+
+namespace Travalorics\Front\Services;
+
+use Carbon\Carbon;
+use Exception;
+use Throwable;
+use Travalorics\Common\Models\Customer;
+use Travalorics\Common\Models\VerifyCode;
+use Travalorics\Common\Repositories\CustomerRepo;
+
+class AccountService extends BaseService
+{
+    /**
+     * @param  $data
+     * @return Customer
+     * @throws Throwable
+     */
+    public function register($data): Customer
+    {
+        $email        = $data['email'];
+        $parseData    = explode('@', $email);
+        $customerData = [
+            'email'    => $data['email'],
+            'name'     => $parseData[0],
+            'password' => $data['password'] ?? '',
+            'from'     => $this->checkFrom(),
+            'active'   => 1,
+        ];
+
+        $customer = CustomerRepo::getInstance()->create($customerData);
+
+        fire_hook_action('front.service.account.register', $customer);
+
+        $customer->notifyRegistration();
+
+        return $customer;
+    }
+
+    /**
+     * Send verify code by email.
+     *
+     * @param  $email
+     * @return void
+     */
+    public function sendVerifyCode($email): void
+    {
+        $code = mt_rand(100000, 999999);
+
+        VerifyCode::query()->where('account', $email)->delete();
+        VerifyCode::query()->create([
+            'account' => $email,
+            'code'    => $code,
+        ]);
+
+        $customer = CustomerRepo::getInstance()->builder()->where('email', $email)->first();
+        if ($customer) {
+            $customer->notifyForgotten($code);
+        }
+    }
+
+    public function checkVerifyCode($code, $account): void
+    {
+        /** @var VerifyCode|null $verifyCode */
+        $verifyCode = VerifyCode::query()->where('account', $account)->first();
+        if (!$verifyCode instanceof VerifyCode) {
+            throw new Exception(front_trans('account.verify_code_error'));
+        }
+        
+        if ($verifyCode->created_at->addMinutes(10) < Carbon::now()) {
+            $verifyCode->delete();
+
+            throw new Exception(front_trans('account.verify_code_expired'));
+        }
+
+        if ($verifyCode->code != $code) {
+            throw new Exception(front_trans('account.verify_code_error'));
+        }
+
+        $customer = CustomerRepo::getInstance()->findByEmail($account);
+        if (! $customer) {
+            throw new Exception(front_trans('account.account_not_exist'));
+        }
+    }
+
+    /**
+     * @param  $code
+     * @param  $account
+     * @param  $password
+     * @return void
+     * @throws Exception
+     */
+    public function verifyUpdatePassword($code, $account, $password): void
+    {
+        $this->checkVerifyCode($code, $account);
+
+        $customer = CustomerRepo::getInstance()->findByEmail($account);
+        CustomerRepo::getInstance()->forceUpdatePassword($customer, $password);
+        
+        VerifyCode::query()->where('account', $account)->delete();
+    }
+
+    /**
+     * @return string
+     */
+    private function checkFrom(): string
+    {
+        if (is_wechat_mini()) {
+            return Customer::FROM_MINIAPP;
+        } elseif (is_wechat_official()) {
+            return Customer::FROM_WECHAT_OFFICIAL;
+        } elseif (is_mobile()) {
+            return Customer::FROM_MOBILE_WEB;
+        } elseif (is_app()) {
+            return Customer::FROM_APP;
+        } else {
+            return Customer::FROM_PC_WEB;
+        }
+    }
+}
